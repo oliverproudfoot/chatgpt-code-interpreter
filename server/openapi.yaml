@@ -1,0 +1,33 @@
+openapi: 3.0.1
+info:
+  title: Code Execution Plugin
+  description: A plugin that allows users to execute Python code and get the output using ChatGPT.
+  version: 'v1'
+servers:
+  - url: http://localhost:3333
+paths:
+  /execute:
+    post:
+      operationId: executeCode
+      summary: Execute Python code and return the output
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The Python code to execute.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    description: The output of the executed code.
